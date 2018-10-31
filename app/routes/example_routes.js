@@ -11,6 +11,8 @@ const customErrors = require('../../lib/custom_errors')
 
 // save certain errors to new variables
 const handle404 = customErrors.handle404
+// we'll use this function to send 401 when a user tries to modify a resource
+// that's owned by someone else
 const requireOwnership = customErrors.requireOwnership
 
 // import the token authentication protocol
@@ -75,7 +77,7 @@ router.patch('/examples/:id', requireToken, (req, res) => {
           delete req.body.example[key]
         }
       })
-
+      // update that example with the provided params minus owner and any empty values
       return example.update(req.body.example)
     })
     // return update success message
