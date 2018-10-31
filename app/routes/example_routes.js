@@ -55,6 +55,7 @@ router.post('/examples', requireToken, (req, res) => {
       // return success message and the object response
       res.status(201).json({ example: example.toObject() })
     })
+    // handle errors
     .catch(err => handle(err, res))
 })
 
@@ -77,7 +78,9 @@ router.patch('/examples/:id', requireToken, (req, res) => {
 
       return example.update(req.body.example)
     })
+    // return update success message
     .then(() => res.sendStatus(204))
+    // handle errors
     .catch(err => handle(err, res))
 })
 
@@ -91,7 +94,9 @@ router.delete('/examples/:id', requireToken, (req, res) => {
       requireOwnership(req, example)
       example.remove()
     })
+    // return delete success message
     .then(() => res.sendStatus(204))
+    // handle errors
     .catch(err => handle(err, res))
 })
 
