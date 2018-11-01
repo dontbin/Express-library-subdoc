@@ -33,9 +33,9 @@ const authorSchema = new mongoose.Schema({
   timestamps: true
 })
 
-// authorSchema.virtual('name.full').get(function () {
-//   return this.name.firstName + ' ' + this.name.lastName
-// })
+authorSchema.virtual('name.full').get(function () {
+  return this.name.firstName + ' ' + this.name.lastName
+})
 
 // export this schema as a mongoose model called 'Example'
 module.exports = mongoose.model('Author', authorSchema)

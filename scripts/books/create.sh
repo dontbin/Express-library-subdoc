@@ -10,7 +10,10 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "book": {
-      "title": "'"${TITLE}"'"
+      "title": "'"${TITLE}"'",
+      "author": {
+        "name": "'"${NAME}"'"
+      }
     }
   }'
 

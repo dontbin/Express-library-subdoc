@@ -9,9 +9,12 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Content-Type: application/json" \
 --header "Authorization: Bearer ${TOKEN}" \
 --data '{
-    "book": {
-      "title": "'"${TITLE}"'"
+  "book": {
+    "title": "'"${TITLE}"'",
+    "author": {
+      "name": "'"${NAME}"'"
     }
-  }'
+  }
+}'
 
 echo
